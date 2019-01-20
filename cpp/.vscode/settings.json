@@ -5,6 +5,11 @@
         "iostream": "cpp",
         "climits": "cpp",
         "initializer_list": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp"
     }
 }
