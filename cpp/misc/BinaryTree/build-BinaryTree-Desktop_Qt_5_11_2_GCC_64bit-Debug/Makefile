@@ -200,6 +200,7 @@ DIST          = /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/spec_post.prf \
+		../.qmake.stash \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -372,6 +373,7 @@ Makefile: ../BinaryTree.pro /home/batman/Qt/5.11.2/gcc_64/mkspecs/linux-g++/qmak
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/batman/Qt/5.11.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -533,6 +535,7 @@ Makefile: ../BinaryTree.pro /home/batman/Qt/5.11.2/gcc_64/mkspecs/linux-g++/qmak
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/qt_config.prf:
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/toolchain.prf:
 /home/batman/Qt/5.11.2/gcc_64/mkspecs/features/default_pre.prf:
