@@ -9,7 +9,9 @@
 #include<queue>
 
 namespace custom_locks {
-/*provides a way to serialize threads in situations where multiple mutexes need to be synchronized*/
+/*provides a way to serialize threads in situations where multiple different non shared mutexes need to be synchronized
+ * Drawbacks: 1. Serialization of R/W task from a shared resource
+ * 	      2. Race Condition: Not addressed*/
 class lock_guard {
 	std::queue<std::mutex*> m_que_M;
 
@@ -37,4 +39,7 @@ public:
 };
 
 }
+
+
+
 

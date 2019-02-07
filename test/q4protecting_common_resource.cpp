@@ -7,30 +7,39 @@
 #include <mutex>
 #include "q1.custom_lock.h"
 
+
 std::mutex mtx;		//mutex1
 std::mutex mtx2;	//different mutex
+
+//sharedVar as a common resource - Race condition not addressed
 int sharedVar = 0;
 
 
 void foo(){
+	printf("doing some work from thread1 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
+	std::this_thread::sleep_for(std::chrono::seconds(5));	//set speed here to check race conditions
+
 	custom_locks::lock_guard lg_1(mtx2);
 	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("hello from thread %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-	std::this_thread::sleep_for(std::chrono::seconds(1));
+	printf("operating over shared resource from thread1 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
 }
 
 void bar(){
+	printf("doing some work from thread2 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
+	std::this_thread::sleep_for(std::chrono::seconds(1));	//set speed here to check race conditions
+
 	custom_locks::lock_guard lg_1(mtx);
 	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("hello from thread %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-	std::this_thread::sleep_for(std::chrono::seconds(2));
+	printf("operating over shared resource from thread2 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
 }
 
 void baz(){
+	printf("doing some work from thread3 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
+	std::this_thread::sleep_for(std::chrono::seconds(1));	//set speed here to check race conditions
+
 	custom_locks::lock_guard lg_1(mtx);
 	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("hello from thread %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-	std::this_thread::sleep_for(std::chrono::seconds(3));
+	printf("operating over shared resource from thread3 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
 }
 
 int main() {
