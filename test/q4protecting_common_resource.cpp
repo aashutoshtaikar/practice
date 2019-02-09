@@ -11,42 +11,24 @@
 std::mutex mtx;		//mutex1
 std::mutex mtx2;	//different mutex
 
-//sharedVar as a common resource - Race condition not addressed
+//sharedVar as a common resource
 int sharedVar = 0;
 
 
 void foo(){
-	printf("doing some work from thread1 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
+	printf("doing some work from thread %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
 	std::this_thread::sleep_for(std::chrono::seconds(5));	//set speed here to check race conditions
 
 	custom_locks::lock_guard lg_1(mtx2);
 	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("operating over shared resource from thread1 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-}
-
-void bar(){
-	printf("doing some work from thread2 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-	std::this_thread::sleep_for(std::chrono::seconds(1));	//set speed here to check race conditions
-
-	custom_locks::lock_guard lg_1(mtx);
-	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("operating over shared resource from thread2 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-}
-
-void baz(){
-	printf("doing some work from thread3 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
-	std::this_thread::sleep_for(std::chrono::seconds(1));	//set speed here to check race conditions
-
-	custom_locks::lock_guard lg_1(mtx);
-	for(int i = 0; i<=9;i++) sharedVar++;
-	printf("operating over shared resource from thread3 %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
+	printf("operating over shared resource from thread %d, shared var:%d \n", std::this_thread::get_id(), sharedVar);
 }
 
 int main() {
 
 	std::thread thread1(foo);
-	std::thread thread2(bar);
-	std::thread thread3(baz);
+	std::thread thread2(foo);
+	std::thread thread3(foo);
 
 	thread1.join();
 	thread2.join();
