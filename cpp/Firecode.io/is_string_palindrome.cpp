@@ -17,17 +17,24 @@ using namespace std;
 
 bool is_string_palindrome(string str)
 {
-    for(int i = 0; i<=str.size()/2 ; i++){
-        return str[i] == str[str.size()-1-i];
+    bool check = true;
+    int pos = 0;
+    for(int i = 0; i<str.size()/2 ; i++){
+        check *= (str[i] == str[str.size()-1-i]);
+        if (str[i] != str[str.size()-1-i]) {
+            pos = i; 
+            cout << "error in position: " << pos << '\n';
+        }
     }
-    return true;
+    return check;
 }
 
 
 
 int main(){
 
-    int arr[] = {1,2,3,4,1,2,4,3,5};
+    string s = "mamtmem";
+    cout << is_string_palindrome(s);
 
     return 0;
 }

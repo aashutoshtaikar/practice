@@ -83,27 +83,42 @@ int findSingle(int ar[], int ar_size)
 	{ 
 		// Do XOR of all elements and return 
 		int res = ar[0];
-        cout << endl; 
+        //cout << endl; 
 		for (int i = 1; i < ar_size; i++){
-            cout << res << " XOR " << ar[i] << "=";
+            // cout << res << " XOR " << ar[i] << "=";
             res = res ^ ar[i];
-            cout << res <<endl;
+            // cout << res <<endl;
         } 
 			
 		return res; 
 	} 
-
+    
+    // int findSingle(string ar) 
+	// { 
+	// 	// Do XOR of all elements and return 
+	// 	int res = ar[0];
+    //     cout << endl; 
+	// 	for (int i = 1; i < ar.size(); i++){
+    //         cout << res << " XOR " << int(ar[i]) << "=";
+    //         res = res ^ int(ar[i]);
+    //         cout << res <<endl;
+    //     } 
+			
+	// 	return res; 
+	// } 
 
 int main() { 
-	int ar[] = {2, 3, 5, 4, 5, 3, 4, 4}; 
+	int ar[] = {2, 3, 5, 4, 5, 3, 4}; 
 	int sz = sizeof(ar) / sizeof(ar[0]); 
 	
+    string str = "abcde";
+    
     //by hashing - stl map
-    cout << single_number2(ar,sz) << endl;
+    //cout << single_number2(ar,sz) << endl;
 
     //by XOR
-    //cout << findSingle(ar, sz) << endl;
-
+    cout << findSingle(ar, sz) << endl;
+    //cout << findSingle(str);
 
 
 	return 0; 
